@@ -4,4 +4,5 @@
 void primeNumbers();
 
 void evenNumbers();
+void naturalNumbers();
 #endif

@@ -22,6 +22,7 @@ int main()
         cout << "Enter the char: " << endl;
         cout << "a. Prime numbers" << endl;
         cout << "b. Even numbers" << endl;
+        cout << "c. natural numbers" << endl;
         cout << "e. Exit" << endl;
 
         cin >> choice;  
@@ -34,6 +35,8 @@ int main()
         case 'b':
             evenNumbers();
             break;
+        case 'c':
+            naturalNumbers();
 
         case 'e':
             cout << "Exiting program..." << endl;

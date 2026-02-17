@@ -43,3 +43,15 @@ void evenNumbers(){
             cout << i << " ";
     }
 }
+
+void naturalNumbers()
+{
+    cout << "Enter last number to print: ";
+    int num;
+    cin >> num;
+    cout << "The natural number untill " << num << " are: " << endl;
+    for (int i = 1; i <= num; i++)
+    {
+        cout << i << " ";
+    }
+}
