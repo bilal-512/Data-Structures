@@ -30,3 +30,16 @@ void primeNumbers()
 
     cout << endl;
 }
+
+
+void evenNumbers(){
+    int num;
+    cout << "Enter last number: ";
+    cin >> num;
+    cout << "The even numbers are: ";
+    for (int i = 1; i <= num; i++)
+    {
+        if (i % 2 == 0)
+            cout << i << " ";
+    }
+}

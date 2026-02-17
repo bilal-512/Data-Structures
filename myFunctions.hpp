@@ -3,4 +3,5 @@
 
 void primeNumbers();
 
+void evenNumbers();
 #endif
