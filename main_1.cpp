@@ -1,6 +1,6 @@
 
 /*
-This is lecture 1 of Data Structures by Dr. Mudassar Raza.
+This is repo of taught Data Structures by Dr. Mudassar Raza.
 I am maintaining this repo just for my learning purpose
 main_1.cpp means it lecture 1 work and main_2 means it is lecture 2 and so on.
 I have also created header files where i will write my own functions for my help.
@@ -13,9 +13,9 @@ I have also created header files where i will write my own functions for my help
 
 using namespace std;
 
-int main()
+void displayManue()
 {
-    char choice;
+     char choice;
 
     do 
     {
@@ -47,6 +47,10 @@ int main()
         }
 
     } while(choice != 'e');
+}
 
+int main()
+{
+   displayManue();
     return 0;
 }
