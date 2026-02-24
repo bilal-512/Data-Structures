@@ -13,7 +13,7 @@ I have also created header files where i will write my own functions for my help
 
 using namespace std;
 
-void displayManue()
+void manuDriven()
 {
      char choice;
 
@@ -51,6 +51,6 @@ void displayManue()
 
 int main()
 {
-   displayManue();
+   manuDriven();
     return 0;
 }
