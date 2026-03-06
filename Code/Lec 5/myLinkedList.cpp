@@ -1,21 +1,23 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
-
 using namespace std;
 struct Node
 {
     int data;
     Node *next;
 };
+Node *head = NULL;
+
 
 void displayInsertManue();
 void displayLinkedList();
 void displayDeleteManue();
 void insertAtBegining(int val);
-
+void insertAtEnd(int val);
 void insertAtBegining(int val);
-Node *head = NULL;
+void insertAfter(int key, int val);
+void insertBefore(int key, int val);
 
 int main()
 {
@@ -53,6 +55,8 @@ int main()
 void displayInsertManue()
 {
     std::system("clear"); 
+    int val;
+    int myKey = 0;
     cout << "1. Insert at Begining. " << endl;
     cout << "2. Insert at End." << endl;
     cout << "3. Insert after a Node: " << endl;
@@ -61,9 +65,7 @@ void displayInsertManue()
     cin >> choice;
     switch (choice)
     {
-        int val;
     case 1:
-
         cout << "Enter value to insert ";
         cin >> val;
         insertAtBegining(val);
@@ -71,6 +73,21 @@ void displayInsertManue()
     case 2:
         cout << "Enter a value to insert: ";
         cin >> val;
+        insertAtEnd(val);
+        break;
+    case 3: 
+        cout << "Enter a value to insert: ";
+        cin >> val;
+        cout << "Enter a key ";
+        cin >> myKey;
+        insertAfter(myKey, val);
+        break;
+    case 4: 
+        cout << "Enter a value to insert: ";
+        cin >> val;
+        cout << "Enter a key ";
+        cin >> myKey;
+        insertBefore(myKey, val);
         break;
     default:
         cout << "Exiting";
@@ -102,4 +119,74 @@ void insertAtBegining(int val)
     newNode->data = val;
     newNode->next = head;
     head = newNode;
+}
+
+void insertAtEnd(int val)
+{
+    if (!head)
+    {
+        Node* newNode = new Node;
+        newNode->data = val;
+        newNode->next = NULL;
+        head = newNode;
+        return ;
+    }
+    Node* temp = head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+    Node* newNode = new Node;
+    newNode->data = val;
+    newNode->next = NULL;
+    temp->next = newNode;
+}
+
+void insertAfter(int key, int val)
+{
+    if (!head)
+        return;
+    Node* temp = head;
+    while (temp->data != key)
+    {
+        temp = temp->next;
+    }
+    if (temp == NULL)
+    {
+        cout << "404!! Key Not found..." << endl;
+        return;
+    }
+    Node* newNode = new Node;
+    newNode->data = val;
+    newNode->next = temp->next;
+    temp->next = newNode;
+}
+
+void insertBefore(int key, int val)
+{
+    if (!head)
+    {
+        Node* newNode = new Node;
+        newNode->data = val;
+        newNode->next = NULL;
+        head = newNode;
+        return;
+    }
+    Node* previous = NULL;
+    Node* temp = head;
+    while (temp->data != key)
+    {
+        previous = temp;
+        temp = temp->next;
+    }
+    if (temp == NULL)
+    {
+        cout << "404!! Key Not found..." << endl;
+        return;
+    } 
+    Node* newNode = new Node;
+    newNode->data = val;
+    newNode->next = temp;
+    previous->next = newNode;
+
 }
