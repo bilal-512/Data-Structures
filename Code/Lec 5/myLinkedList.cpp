@@ -13,11 +13,17 @@ Node *head = NULL;
 void displayInsertManue();
 void displayLinkedList();
 void displayDeleteManue();
+
 void insertAtBegining(int val);
 void insertAtEnd(int val);
-void insertAtBegining(int val);
 void insertAfter(int key, int val);
 void insertBefore(int key, int val);
+
+void deleteAtBegin();
+void deleteAtEnd();
+void deleteAfter(int key);
+void deleteBefore(int key);
+
 
 int main()
 {
@@ -101,6 +107,31 @@ void displayDeleteManue()
     cout << "2. Delete at End." << endl;
     cout << "3. Delete after a Node: " << endl;
     cout << "4. Delete before a Node: " << endl;
+    int choice;
+    cin >> choice;
+    int key = -1;
+    switch (choice)
+    {
+    case 1:
+        deleteAtBegin();
+        break;
+    case 2:
+        deleteAtEnd();
+        break;
+    case 3:
+    
+    cout << "Delete key.." << endl;
+    cin >> key;
+        deleteAfter(key);
+        break;
+    case 4:
+        cout << "Enter key to delete before" << endl;
+        cin >> key;
+        deleteBefore(key);
+        break;
+    default:
+        break;
+    };
 }
 
 void displayLinkedList()
@@ -189,4 +220,104 @@ void insertBefore(int key, int val)
     newNode->next = temp;
     previous->next = newNode;
 
+}
+
+
+void deleteAtBegin()
+{
+    if (!head)
+    {
+        cout << "Linked List is Empty" << endl;
+        return;
+    }
+    head= head->next;
+    cout << "First Element of the linked List deleted. " << endl;
+}
+
+void deleteAtEnd()
+{
+    if (!head)
+    {
+        cout << "Linked List is Empty!!" << endl;
+        return;
+    }
+    if (!head->next)
+    {
+        head = NULL;
+        return;
+    }
+    Node* prev = NULL;
+    Node* temp = head;
+    while(temp->next)
+    {
+        prev = temp;
+        temp = temp->next;
+    }
+    prev->next = NULL;
+    delete temp;
+    cout << "Last Element of the Linked List Deleted." << endl;
+}
+   
+
+void deleteAfter(int key)
+{
+    if (!head)
+    {
+        cout << "Linked List is Empty. Can not delete " << endl;
+        return ;
+    }
+    if (head->next == NULL)
+    {
+        cout << "Single Element. Can not Delete" << endl;
+        return;
+    }
+    Node* temp = head;
+    while (temp->data != key)
+    {
+        temp = temp->next;
+    }
+    if (temp->next)
+    {
+        temp->next = temp->next->next;
+        delete temp->next;
+    }
+    
+    
+}
+
+void deleteBefore(int key)
+{
+    if (!head)
+    {
+    cout << "Linked list is Empty. Cannot delete."<< endl;
+    return;
+    }
+
+    if (head->data == key)
+    {
+    cout << "Cannot delete before head element."<< endl;
+    return;
+    }
+    Node* prev = NULL;
+    Node* temp = head;
+    while (temp->next && temp->next->data != key)
+    {
+        prev = temp;
+        temp = temp->next;
+    }
+    if (!temp->next)
+    {
+        cout << "Key not found." << endl;
+        return;
+    }
+    if (prev == NULL) 
+    {
+    head = temp->next;
+    delete temp;
+    }
+    else
+    {
+        prev->next = temp->next;
+        delete temp;
+    }
 }
