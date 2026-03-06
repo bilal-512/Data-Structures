@@ -78,6 +78,7 @@ void addElement(int arr[], int &idx)
     sortArr(arr, idx);
 }
 
+
 void removeElement(int arr[], int &sizeOfArr)
 {
     
